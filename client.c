@@ -157,7 +157,7 @@ print_message(const char * fmt, ...) {
   vprintf(fmt, ap);
   putchar('\n');
   va_end(ap);
-	rl_forced_update_display();
+  rl_forced_update_display();
 }
 
 static void
@@ -230,7 +230,7 @@ main(int argc, char * argv[]) {
   fds[0].events = POLLIN;
   fds[1].fd = fileno(rl_instream);
   fds[1].events = POLLIN;
-	while (1) {
+  while (1) {
     n = poll(fds, 2, 200);
     if (-1 == n) die("'poll' failed: %s", system_error());
     if (!n) request_new_messages();
@@ -244,7 +244,7 @@ main(int argc, char * argv[]) {
         handle_output();
       } else if (fds[0].revents) die("Socket error");
     }
-	}
+  }
   return 0;
 }
 
